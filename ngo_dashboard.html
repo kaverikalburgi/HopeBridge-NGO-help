@@ -1,0 +1,97 @@
+<!-- templates/ngo_dashboard.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>NGO Dashboard - Helping Hands</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>NGO Dashboard</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('public_feed') }}">Public Feed</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>
+      {% endif %}
+    {% endwith %}
+
+    <section class="card">
+      <h2>All Reports</h2>
+      {% if reports %}
+        <table class="reports-table">
+          <thead><tr><th>ID</th><th>Reporter</th><th>Description</th><th>Location</th><th>Photo</th><th>Status</th><th>Priority</th><th>Category</th><th>Actions</th></tr></thead>
+          <tbody>
+          {% for r in reports %}
+            <tr>
+              <td>{{ r[0] }}</td>   <!-- Report ID -->
+              <td>{{ r[8] }}</td>   <!-- Reporter Name -->
+              <td>
+               {{ r[2] }}
+                <br>
+                <small style="color:gray;">English: {{ r[3] }}</small>
+              </td>   <!-- Description -->
+              <td>
+                {{ r[3] }}
+                <br>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ r[3] }}" target="_blank">
+                  <button>View Map</button>
+                </a>
+              </td>  <!-- Location -->
+              <td>
+              {% if r.progress_photo %}
+                <img src="{{ url_for('static', filename='uploads/' ~ r.progress_photo) }}" width="150">
+              {% else %}
+                <form action="/upload_progress/{{ r[0] }}" method="post" enctype="multipart/form-data">
+                  <input type="file" name="progress_photo" required>
+                  <button type="submit">Upload Proof Photo</button>
+                </form>
+              {% endif %}
+              </td>
+              <td>{{ r[4] }}</td>   <!-- Status -->
+              <td>
+              {% if r[6] == 'High' %}
+                <span style="color:red;font-weight:bold;">High</span>
+              {% elif r[6] == 'Medium' %}
+                <span style="color:orange;">Medium</span>
+              {% else %}
+                <span style="color:green;">Low</span>
+              {% endif %}
+              </td>
+
+                <!-- <form action="/update_status/{{ r[0] }}" method="post">
+                  <select name="status">
+                    <option value="Accepted">Accepted</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                  </select>
+                   <button type="submit">Update</button> 
+                </form> -->
+                <!-- <form action="/upload_progress/{{ r[0] }}" method="post" enctype="multipart/form-data">
+                  <input type="file" name="progress_photo" required>
+                  <button type="submit">Upload Progress Photo</button>
+                </form> -->
+              </td>
+              <td>{{ r[7] }}</td>   <!-- Category -->
+              <td>
+                <a href="{{ url_for('view_feedback', report_id=r[0]) }}"><button id="decorate">View Feedback</button></a>
+                <a href="{{ url_for('add_feedback', report_id=r[0]) }}"><button id="decorate" style="background-color: blanchedalmond;">Add Feedback</button></a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No reports found.</p>
+      {% endif %}
+    </section>
+  </main>
+</body>
+</html>

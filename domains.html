@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Our Domains</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+      /* Domain Cards Styling */
+      .domain-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .domain-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        position: relative;
+      }
+      
+      .domain-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-color: #4CAF50;
+      }
+      
+      .domain-card:active {
+        transform: translateY(-2px);
+      }
+      
+      .domain-card h2 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+      
+      .domain-card p {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+      
+      /* Schemes Section Styling */
+      .schemes-container {
+        margin-top: 40px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 40px auto;
+      }
+      
+      .schemes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+      
+      .scheme-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .scheme-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+      
+      .scheme-category {
+        display: inline-block;
+        background: #4CAF50;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+      
+      .scheme-title {
+        font-size: 1.3em;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      
+      .scheme-description {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+      
+      .scheme-link {
+        display: inline-block;
+        background: #007bff;
+        color: white;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        pointer-events: auto;
+      }
+      
+      .scheme-link:hover {
+        background: #0056b3;
+      }
+      
+      .scheme-meta {
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: #999;
+      }
+      
+      /* View Details link styling (hidden now since cards are clickable) */
+      .view-details {
+        display: inline-block;
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 500;
+        margin-top: 10px;
+      }
+      
+      .view-details:hover {
+        text-decoration: underline;
+      }
+      
+      h1 {
+        margin: 30px 0;
+      }
+      
+      h2 {
+        margin: 30px 0 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 style="text-align:center">Our Focus Areas</h1>
+    
+    <!-- Clickable Domain Cards -->
+    <div class="domain-container">
+      <a href="/domain/child" class="domain-card">
+        <h2>Child Welfare</h2>
+        <p>Education support, food, healthcare and protection for children.</p>
+        <span class="view-details">Click to view details →</span>
+      </a>
+      
+      <a href="/domain/women" class="domain-card">
+        <h2>Women Empowerment</h2>
+        <p>Helping women facing violence, unemployment and social issues.</p>
+        <span class="view-details">Click to view details →</span>
+      </a>
+      
+      <a href="/domain/elderly" class="domain-card">
+        <h2>Elderly Support</h2>
+        <p>Providing medical help and emotional care for senior citizens.</p>
+        <span class="view-details">Click to view details →</span>
+      </a>
+      
+      <a href="/domain/homeless" class="domain-card">
+        <h2>Homeless / Unemployed</h2>
+        <p>Providing shelter, food and job opportunities.</p>
+        <span class="view-details">Click to view details →</span>
+      </a>
+      
+      <a href="/domain/environment" class="domain-card">
+        <h2>Environment</h2>
+        <p>Garbage issues, cleanliness and waste management.</p>
+        <span class="view-details">Click to view details →</span>
+      </a>
+      
+      <a href="/domain/health" class="domain-card">
+        <h2>Community Health</h2>
+        <p>Medical camps and healthcare assistance.</p>
+        <span class="view-details">Click to view details →</span>
+      </a>
+    </div>
+    
+    <!-- Real Government Schemes Section -->
+    <div class="schemes-container">
+      <h2 style="text-align:center; margin-bottom:30px;">Government Schemes & Initiatives</h2>
+      
+      <div class="schemes-grid">
+        <!-- Child Welfare Schemes -->
+        <div class="scheme-card" onclick="window.open('https://www.mygov.in/poshan-abhiyaan/', '_blank')">
+          <span class="scheme-category">Child Welfare</span>
+          <h3 class="scheme-title">POSHAN Abhiyaan</h3>
+          <p class="scheme-description">National Nutrition Mission to improve nutritional outcomes for children, pregnant women and lactating mothers.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://www.mygov.in/poshan-abhiyaan/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Women & Child Development</div>
+        </div>
+        
+        <div class="scheme-card" onclick="window.open('https://wcd.nic.in/bbbp-schemes', '_blank')">
+          <span class="scheme-category">Child Welfare</span>
+          <h3 class="scheme-title">Beti Bachao Beti Padhao</h3>
+          <p class="scheme-description">Addressing declining child sex ratio and promoting education of the girl child.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://wcd.nic.in/bbbp-schemes', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Women & Child Development</div>
+        </div>
+        
+        <!-- Women Empowerment Schemes -->
+        <div class="scheme-card" onclick="window.open('https://wcd.nic.in/schemes/one-stop-centre-scheme', '_blank')">
+          <span class="scheme-category">Women Empowerment</span>
+          <h3 class="scheme-title">One Stop Centre Scheme</h3>
+          <p class="scheme-description">Support to women affected by violence, providing medical aid, police assistance and legal counseling.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://wcd.nic.in/schemes/one-stop-centre-scheme', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Women & Child Development</div>
+        </div>
+        
+        <div class="scheme-card" onclick="window.open('https://mahilaehaat-rmk.gov.in/', '_blank')">
+          <span class="scheme-category">Women Empowerment</span>
+          <h3 class="scheme-title">Mahila E-Haat</h3>
+          <p class="scheme-description">Online marketing platform for women entrepreneurs to showcase products.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://mahilaehaat-rmk.gov.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Women & Child Development</div>
+        </div>
+        
+        <!-- Elderly Support Schemes -->
+        <div class="scheme-card" onclick="window.open('https://nsap.nic.in/', '_blank')">
+          <span class="scheme-category">Elderly Support</span>
+          <h3 class="scheme-title">National Social Assistance Programme</h3>
+          <p class="scheme-description">Monthly pension for elderly citizens (Indira Gandhi National Old Age Pension Scheme).</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://nsap.nic.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Rural Development</div>
+        </div>
+        
+        <div class="scheme-card" onclick="window.open('https://socialjustice.gov.in/schemes/45', '_blank')">
+          <span class="scheme-category">Elderly Support</span>
+          <h3 class="scheme-title">Vayoshreshtha Samman</h3>
+          <p class="scheme-description">National awards for senior citizens and institutions working for elderly welfare.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://socialjustice.gov.in/schemes/45', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Social Justice</div>
+        </div>
+        
+        <!-- Homeless/Unemployed Schemes -->
+        <div class="scheme-card" onclick="window.open('https://pmaymis.gov.in/', '_blank')">
+          <span class="scheme-category">Homeless Support</span>
+          <h3 class="scheme-title">Pradhan Mantri Awas Yojana</h3>
+          <p class="scheme-description">Housing for all urban poor including homeless by 2022.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://pmaymis.gov.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Housing & Urban Affairs</div>
+        </div>
+        
+        <div class="scheme-card" onclick="window.open('https://ddugky.gov.in/', '_blank')">
+          <span class="scheme-category">Unemployed</span>
+          <h3 class="scheme-title">Deen Dayal Upadhyaya Grameen Kaushalya Yojana</h3>
+          <p class="scheme-description">Skills training and placement for rural youth.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://ddugky.gov.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Rural Development</div>
+        </div>
+        
+        <!-- Environment Schemes -->
+        <div class="scheme-card" onclick="window.open('https://swachhbharatmission.gov.in/', '_blank')">
+          <span class="scheme-category">Environment</span>
+          <h3 class="scheme-title">Swachh Bharat Mission</h3>
+          <p class="scheme-description">Clean India campaign focusing on waste management and sanitation.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://swachhbharatmission.gov.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Housing & Urban Affairs</div>
+        </div>
+        
+        <div class="scheme-card" onclick="window.open('https://moef.gov.in/ncap/', '_blank')">
+          <span class="scheme-category">Environment</span>
+          <h3 class="scheme-title">National Clean Air Programme</h3>
+          <p class="scheme-description">Comprehensive plan to reduce air pollution in 122 cities.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://moef.gov.in/ncap/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Environment, Forest & Climate Change</div>
+        </div>
+        
+        <!-- Community Health Schemes -->
+        <div class="scheme-card" onclick="window.open('https://pmjay.gov.in/', '_blank')">
+          <span class="scheme-category">Community Health</span>
+          <h3 class="scheme-title">Ayushman Bharat</h3>
+          <p class="scheme-description">Health insurance cover of ₹5 lakh per family for secondary and tertiary care.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://pmjay.gov.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Health & Family Welfare</div>
+        </div>
+        
+        <div class="scheme-card" onclick="window.open('https://nhm.gov.in/', '_blank')">
+          <span class="scheme-category">Community Health</span>
+          <h3 class="scheme-title">National Health Mission</h3>
+          <p class="scheme-description">Strengthening healthcare systems, maternal and child health services.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://nhm.gov.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Health & Family Welfare</div>
+        </div>
+        
+        <!-- Additional Schemes -->
+        <div class="scheme-card" onclick="window.open('https://pmposhan.education.gov.in/', '_blank')">
+          <span class="scheme-category">Child Welfare</span>
+          <h3 class="scheme-title">Mid-Day Meal Scheme</h3>
+          <p class="scheme-description">Hot cooked meals to children in government and government-aided schools.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://pmposhan.education.gov.in/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Education</div>
+        </div>
+        
+        <div class="scheme-card" onclick="window.open('https://wcd.nic.in/pmmy/', '_blank')">
+          <span class="scheme-category">Women Empowerment</span>
+          <h3 class="scheme-title">Pradhan Mantri Matru Vandana Yojana</h3>
+          <p class="scheme-description">Cash incentive of ₹5,000 for pregnant and lactating mothers.</p>
+          <button class="scheme-link" onclick="event.stopPropagation(); window.open('https://wcd.nic.in/pmmy/', '_blank')">Learn More</button>
+          <div class="scheme-meta">Ministry: Women & Child Development</div>
+        </div>
+      </div>
+      
+      <p style="text-align:center; margin-top:30px; color:#666;">
+        <em>These are actual government schemes. Please verify eligibility criteria on official websites.</em>
+      </p>
+    </div>
+    
+    <script>
+      // Optional: Add keyboard accessibility
+      document.querySelectorAll('.domain-card, .scheme-card').forEach(card => {
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
